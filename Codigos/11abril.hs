@@ -12,8 +12,8 @@ instance Functor CMaybe where
 -- fmap (++ "he") (fmap (++ "ha") (CJust 0 "ho"))
 -- fmap (++ "blah") CNothing
 
-maybeAdd :: Maybe (Int -> Int -> Int)
-maybeAdd = pure (+)
+maybeAdd :: Maybe (Int -> Int -> Int -> Int)
+maybeAdd = pure (\x y z -> x + y + z)
 
 maybeInt1 :: Maybe Int
 maybeInt1 = Just 5
@@ -21,8 +21,12 @@ maybeInt1 = Just 5
 maybeInt2 :: Maybe Int
 maybeInt2 = Just 7
 
+maybeInt3 :: Maybe Int
+maybeInt3 = Just 10
+
 result :: Maybe Int
-result = maybeAdd <*> maybeInt1 <*> maybeInt2
+result = maybeAdd <*> maybeInt1 <*> maybeInt2 <*> maybeInt3
+
 
 addToList :: [Int -> Int -> Int]
 addToList = [(+), (-)]
