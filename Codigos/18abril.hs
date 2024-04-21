@@ -18,5 +18,5 @@ result = (*) <$> zipList1 <*> zipList2
 
 getChar2 :: Int -> IO String
 getChar2 0 = return []
-getChar2 n = (:) <$> getChar <*> getChar2 (n - 1)
+getChar2 n = pure (:) <*> getChar <*> getChar2 (n - 1)
 
