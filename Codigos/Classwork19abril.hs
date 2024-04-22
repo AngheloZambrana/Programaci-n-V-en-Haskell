@@ -24,3 +24,16 @@ instance Alternative MyList where
     empty = MyEmpty
     MyEmpty <|> my = my
     my <|> _ = my
+
+-- Función de suma
+myFunctionsAdd :: MyList (Int -> Int -> Int)
+myFunctionsAdd = MyCons (+) MyEmpty
+
+-- Función de resta
+myFunctionsSubs :: MyList (Int -> Int -> Int)
+myFunctionsSubs = MyCons (-) MyEmpty
+
+-- Función de multiplicación
+myFunctionsMult :: MyList (Int -> Int -> Int)
+myFunctionsMult = MyCons (*) MyEmpty
+
