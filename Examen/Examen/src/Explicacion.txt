@@ -1,0 +1,23 @@
+    Función generateTruthTable:
+    Esta función toma una expresión lógica expr como entrada y genera una tabla de verdad para esa expresión. 
+    Utiliza una lista de comprensión para generar todas las combinaciones posibles de valores de verdad para 
+    las variables involucradas en la expresión (en este caso, A, B y C). Luego, para cada combinación de valores 
+    de verdad, utiliza la función evaluate para calcular el valor de verdad de la expresión expr con esas asignaciones 
+    específicas de variables. La función devuelve una lista de tuplas donde cada tupla contiene una variable (A, B o C), 
+    los valores de verdad de las variables A, B y C, y el resultado de evaluar la expresión expr para esa combinación de valores.
+
+    Función evaluate:
+    Esta función toma una expresión lógica expr y un conjunto de asignaciones de variables, y calcula el 
+    valor de verdad de esa expresión. Utiliza la coincidencia de patrones para manejar diferentes casos de e
+    xpresiones lógicas: para una variable, busca su valor de verdad en las asignaciones; para la negación de una 
+    expresión, evalúa la expresión recursivamente y niega su resultado; para la conjunción y disyunción de expresiones, 
+    evalúa ambas expresiones recursivamente y aplica el operador lógico correspondiente. La función devuelve el valor de 
+    verdad calculado para la expresión dada el conjunto de asignaciones de variables.
+
+    Función evalExpr:
+    Esta función proporciona una interfaz simplificada para evaluar una expresión lógica dada un conjunto de asignaciones 
+    de variables. Es similar a la función evaluate, pero toma solo la expresión y las asignaciones como argumentos, lo que 
+    hace más conveniente su uso. Utiliza la misma lógica de evaluación que la función evaluate, pero con una sintaxis más 
+    compacta. Esta función es útil cuando solo se necesita evaluar una expresión sin especificar los detalles de las asignaciones 
+    de variables en cada llamada.
+

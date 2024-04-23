@@ -13,6 +13,7 @@ instance Functor MyMaybe where
 
 -- Instancia de Applicative para MyMaybe
 instance Applicative MyMaybe where
+    pure :: a -> MyMaybe a
     pure = MyJust
     MyNothing <*> _ = MyNothing
     (MyJust f) <*> something = fmap f something
