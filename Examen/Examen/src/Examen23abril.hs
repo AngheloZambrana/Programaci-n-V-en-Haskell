@@ -22,11 +22,9 @@ instance Functor Tree where
 
 instance Applicative Tree where
     pure x = Leaf x
-    Leaf f <*> tree = fmap f tree
-    Node f left1 right1 <*> tree = Node (f (rootValue tree)) (left1 <*> tree) (right1 <*> tree)
-        where
-            rootValue (Leaf x) = x
-            rootValue (Node x _ _) = x
+    Leaf f <*> t = fmap f t
+    Node f left1 right1 <*> Node x left2 right2 = Node (f x) (left1 <*> left2) (right1 <*> right2)
+
 
 instance Alternative Tree where
     empty = Leaf undefined
@@ -47,4 +45,7 @@ sumarArboles :: Tree Int -> Tree Int -> Tree Int
 sumarArboles (Leaf x) (Leaf y) = Leaf (x + y)
 sumarArboles (Node x1 left1 right1) (Node x2 left2 right2) = Node (x1 + x2) (sumarArboles left1 left2) (sumarArboles right1 right2)
 
---Usando alternative dar una lista de arboles y devolver un arbol con 
+concatenarArboles :: [Tree a] -> Tree a
+concatenarArboles [] = Leaf undefined
+concatenarArboles (Leaf x : xs) = Node x (Leaf x) (concatenarArboles xs)
+concatenarArboles (Node x left right : xs) = Node x left (right <|> concatenarArboles xs)
